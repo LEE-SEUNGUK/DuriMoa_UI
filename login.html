@@ -1,3 +1,17 @@
+<style>
+    #profileImage {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+    }
+
+    h3>span {
+        color: #6cae62;
+    }
+</style>
+
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -8,19 +22,19 @@
                             <div class="mt-5 d-flex justify-content-center">
                                 <img src="image/logo.png" alt="" width="150px">
                             </div>
-                            <div class=" mt-5 d-flex justify-content-center">
+                            <div class=" mt-4 d-flex justify-content-center">
                                 <form class="d-flex flex-column justify-content-center align-items-center w-75"
                                     action="" method="post">
-                                    <input class="form-control" type="text" name="userId" id="userId"
-                                        placeholder="이메일">
+                                    <input class="form-control userId" type="text" name="userId" placeholder="이메일">
                                     <label for="id"></label>
-                                    <input class="mt-1 form-control" type="password" name="userPw" id="userPw"
+                                    <input class="mt-1 form-control userPw" type="password" name="userPw"
                                         placeholder="비밀번호" autocomplete="off">
                                     <label for=""></label>
                                     <div class="mt-4 d-flex w-100">
                                         <input type="checkbox" id="auto_login">
                                         <label for="auto_login">자동 로그인</label>
-                                        <a href="#" style="margin-left: 140px;">회원가입</a>
+                                        <a style="margin-left: 140px; cursor: pointer;" data-bs-target="#signUpModal"
+                                            data-bs-toggle="modal">회원가입</a>
                                     </div>
                                     <button type="button" id="login"
                                         class="mt-5 btn btn-primary rounded-pill w-75">로그인</button>
@@ -44,3 +58,73 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
+        <div class="modal-content w-75">
+            <div class="container-fluid">
+                <div class="row w-100">
+                    <div class="col-12 signUp">
+                        <div class="modal-body">
+                            <div class="mt-5 d-flex justify-content-center">
+                                <h3><span>회원정보</span>를 입력해주세요</h3>
+                            </div>
+                            <div class=" mt-4 d-flex justify-content-center">
+                                <form class="d-flex flex-column justify-content-center align-items-center w-75"
+                                    action="" method="post">
+                                    <p>프로필 이미지</p>
+                                    <div class="mb-3">
+                                        <img src="image/profile_img.png" id="profileImage" class="my-3"
+                                            style="cursor: pointer; border-radius: 50%;">
+                                        <img src="image/camera.png" id="camera" alt=""
+                                            style="width: 30px; position: absolute; top: 28%; right: 38%; cursor: pointer;">
+                                    </div>
+                                    <input type="file" id="imageUpload" style="display: none;" accept="image/*">
+                                    <div class="mb-1 w-100 d-flex justify-content-start"><label for="userId">아이디</label>
+                                    </div>
+                                    <input class="form-control userId" type="text" name="userId" placeholder="8~12자리의 영문 또는 숫자"
+                                        style="background-image: none; padding-left: 20px;">
+                                    <div class="mt-3 mb-1 w-100 d-flex justify-content-start"><label for="userId">비밀번호</label>
+                                    </div>
+                                    <input class="form-control userPw" type="password" name="userPw"
+                                        style="background-image: none; padding: 20px;" placeholder="8자리 이상의 영문 또는 숫자"
+                                        autocomplete="off">
+                                    <input class="mt-1 form-control userPw" type="password" name="userPw"
+                                        style="background-image: none; padding: 20px" placeholder="비밀번호 확인"
+                                        autocomplete="off">
+                                    <div class="mt-3 mb-1 w-100 d-flex justify-content-start"><label for="userId">개인정보</label>
+                                    </div>
+                                    <input class="form-control userNm" type="text" name="userNm" placeholder="이름"
+                                        autocomplete="off">
+                                    <input class="mt-1 form-control userEmail" type="email" name="userEmail"
+                                        placeholder="이메일" autocomplete="off">
+                                    <button type="button" id="signUp" class="my-5 btn btn-primary rounded-pill w-50"
+                                        data-bs-target="#loginModal" data-bs-toggle="modal"
+                                        data-bs-dismiss="modal">완료</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#profileImage").click(function () {
+        $("#imageUpload").click();
+    });
+
+    $("#camera").click(function () {
+        $("#imageUpload").click();
+    });
+
+    $("#imageUpload").change(function () {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            $("#profileImage").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+</script>

@@ -33,38 +33,56 @@
     padding: 0 !important;
 }
 
-#userId {
+.userId {
     padding-left: 38px;
     height: 45px;
     background: url('../image/user.png') no-repeat left center;
     background-size: 22px;
     background-position: 10px;
     font-size: 14px;
+    border: none;
+    outline: 1px solid #8989896c;
+    box-shadow: none !important;
 }
 
-#userPw {
+.userPw {
     padding-left: 38px;
     height: 45px;
     background: url('../image/pw.png') no-repeat left center;
     background-size: 16px;
     background-position: 14px;
     font-size: 14px;
-}
-
-
-#userId:focus {
+    border: none;
+    outline: 1px solid #8989896c;
     box-shadow: none !important;
-    border: 1px solid #00000049 !important;
 }
 
-#userId:hover,
-#userPw:hover {
-    border: 1px solid #00000049 !important;
-}
-
-#userPw:focus {
+.userNm,
+.userEmail {
+    padding-left: 20px;
+    height: 45px;
+    font-size: 14px;
+    border: none;
+    outline: 1px solid #8989896c;
     box-shadow: none !important;
-    border: 1px solid #00000049 !important;
+}
+
+.userId:hover,
+.userPw:hover,
+.userNm:hover,
+.userEmail:hover {
+    outline: 1px solid #0000009e;
+    transition: outline 0.5s;
+}
+
+
+
+.userId:focus,
+.userPw:focus,
+.userNm:focus,
+.userEmail:focus {
+    transition: all 0.01s;
+    outline: 2px solid #0000009e !important;
 }
 
 a {
@@ -110,19 +128,27 @@ a {
     color: black;
     height: 45px;
     border: none;
+    opacity: 0.9;
+}
+
+#kakao_login:hover {
+    opacity: 1;
+    transition: 0.5s ease;
 }
 
 
-#login {
+#login,
+#signUp {
     background-color: #c4ddc0;
     color: black;
     border: none !important;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
-#login:hover {
+#login:hover,
+#signUp:hover {
     opacity: 1;
-    transition: opacity 0.5s ease;
+    transition: 0.5s ease;
 }
 
 #auto_login {
@@ -156,6 +182,6 @@ a {
 
 label:hover::before,
 #auto_login:hover+label::before {
-    border-color: rgb(168, 168, 168);
+    border-color: #0000006c;
     transition: all 0.3s;
 }
