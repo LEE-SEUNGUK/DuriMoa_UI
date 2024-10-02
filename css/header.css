@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box !important;
+    font-family: 'Pretendard-Regular';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul,
+p,
+li {
+    margin: 0 !important;
+    /* 모든 마진 제거 */
+    padding: 0 !important;
+    /* 모든 패딩 제거 */
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+    display: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+#couple_name {
+    font-family: 'LeeSeoyun';
+    font-size: 20px;
+}
+
+
+#marker_search {
+    width: 300px;
+    height: 45px;
+    line-height: 45px;
+    /* height와 동일하게 설정 */
+}
+
+#marker_search:hover {
+    border: 1px solid #d89393;
+}
+
+#marker_search:focus {
+    box-shadow: none;
+    width: 330px;
+    transition: all 0.3s;
+    border: 1px solid #d89393;
+    box-shadow: 0 0 0 1px rgba(216, 147, 147, 0.5);
+}
+
+#marker_search:focus~.search_btn {
+    visibility: visible;
+    opacity: 1;
+}
+
+.search_btn {
+    position: absolute;
+    visibility: hidden;
+    background: url("../image/search.png") no-repeat center;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-size: 24px 24px;
+    opacity: 0;
+    border: none;
+    transition: 0.3s;
+}
+
+nav #menu_bar {
+    margin-left: 140px !important;
+    display: flex;
+    align-items: center
+}
+
+.menu_option:hover .nav_text {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.nav_text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menu_option>div {
+    padding-top: 18px;
+}
+
+.menu_option:hover>div {
+    transform: translateY(-10px);
+    transition: 0.5s;
+}
+
+.menu_option:not(:hover)>div {
+    transform: translateY(0);
+    transition: 0.5s;
+}
+
+.menu_option:not(:hover) .nav_text {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

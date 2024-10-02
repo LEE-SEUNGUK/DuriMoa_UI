@@ -1,0 +1,46 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="container-fluid">
+                <div class="row w-100">
+                    <div class="col-6 login-left">
+                        <div class="modal-body">
+                            <div class="mt-5 d-flex justify-content-center">
+                                <img src="image/logo.png" alt="" width="150px">
+                            </div>
+                            <div class=" mt-5 d-flex justify-content-center">
+                                <form class="d-flex flex-column justify-content-center align-items-center w-75"
+                                    action="" method="post">
+                                    <input class="form-control" type="text" name="userId" id="userId"
+                                        placeholder="이메일">
+                                    <label for="id"></label>
+                                    <input class="mt-1 form-control" type="password" name="userPw" id="userPw"
+                                        placeholder="비밀번호" autocomplete="off">
+                                    <label for=""></label>
+                                    <div class="mt-4 d-flex w-100">
+                                        <input type="checkbox" id="auto_login">
+                                        <label for="auto_login">자동 로그인</label>
+                                        <a href="#" style="margin-left: 140px;">회원가입</a>
+                                    </div>
+                                    <button type="button" id="login"
+                                        class="mt-5 btn btn-primary rounded-pill w-75">로그인</button>
+                                </form>
+                            </div>
+                            <div class="mt-5 d-flex flex-column align-items-center">
+                                <div class="social-login w-75">
+                                    <p class="mb-4 hr-sect ">or</p>
+                                </div>
+                                <button class="mt-3 mb-5 btn btn-primary w-75 ps-4" id="kakao_login" type="button">
+                                    카카오 로그인
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 login-right">
+                        <img class="login-image" src="image/login_slide/1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
