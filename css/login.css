@@ -1,11 +1,11 @@
 .modal-content {
-    border-radius: 30px;
+    border-radius: 10px;
     overflow: hidden;
     /* 기본 모달의 라운드 설정 */
 }
 
 .modal-dialog {
-    max-height: 500px;
+    max-height: 400px;
 }
 
 
@@ -142,7 +142,7 @@ a {
     background-color: #c4ddc0;
     color: black;
     border: none !important;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 #login:hover,

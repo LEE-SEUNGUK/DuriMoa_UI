@@ -12,11 +12,38 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/mypage.css">
     <title>두리모아</title>
+    <style>
+        * {
+            box-sizing: border-box !important;
+            font-family: 'Pretendard-Regular';
+        }
+
+
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'LeeSeoyun';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
     <script>
         $(document).ready(function () {
-            $('header').load('header.html');
-            // $('main').load('main.html');
+            $('header').load('header.html', function () {
+                $('#mypage').click(function () {
+                    console.log("dd")
+                    $('main').load('mypage.html');
+                });
+            });
+
             $('.login_modal').load('login.html');
         });
     </script>
@@ -25,7 +52,7 @@
 <body>
     <div class="container-fluid">
         <header style="height: 10vh;"></header>
-        <!-- <main style="height: 60vh;"></main> -->
+        <main></main>
         <div class="login_modal"></div>
     </div>
 </body>

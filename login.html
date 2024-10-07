@@ -13,7 +13,7 @@
 </style>
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="login modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="container-fluid">
                 <div class="row w-100">
@@ -60,45 +60,48 @@
 </div>
 
 <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
-        <div class="modal-content w-75">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
+        <div class="modal-content">
             <div class="container-fluid">
-                <div class="row w-100">
+                <div class="row">
                     <div class="col-12 signUp">
                         <div class="modal-body">
-                            <div class="mt-5 d-flex justify-content-center">
+                            <div class="mt-4 d-flex justify-content-center">
                                 <h3><span>회원정보</span>를 입력해주세요</h3>
                             </div>
-                            <div class=" mt-4 d-flex justify-content-center">
+                            <div class=" mt-3 d-flex justify-content-center">
                                 <form class="d-flex flex-column justify-content-center align-items-center w-75"
                                     action="" method="post">
                                     <p>프로필 이미지</p>
-                                    <div class="mb-3">
-                                        <img src="image/profile_img.png" id="profileImage" class="my-3"
+                                    <div class="mb-1">
+                                        <img src="image/profile_img.png" id="profileImage" class="my-2"
                                             style="cursor: pointer; border-radius: 50%;">
                                         <img src="image/camera.png" id="camera" alt=""
-                                            style="width: 30px; position: absolute; top: 28%; right: 38%; cursor: pointer;">
+                                            style="width: 30px; position: absolute; top: 26%; right: 38%; cursor: pointer;">
                                     </div>
                                     <input type="file" id="imageUpload" style="display: none;" accept="image/*">
                                     <div class="mb-1 w-100 d-flex justify-content-start"><label for="userId">아이디</label>
                                     </div>
-                                    <input class="form-control userId" type="text" name="userId" placeholder="8~12자리의 영문 또는 숫자"
+                                    <input class="form-control userId" type="text" name="userId"
+                                        placeholder="8~12자리의 숫자 또는 영문"
                                         style="background-image: none; padding-left: 20px;">
-                                    <div class="mt-3 mb-1 w-100 d-flex justify-content-start"><label for="userId">비밀번호</label>
+                                    <div class="mt-3 mb-1 w-100 d-flex justify-content-start"><label
+                                            for="userId">비밀번호</label>
                                     </div>
                                     <input class="form-control userPw" type="password" name="userPw"
-                                        style="background-image: none; padding: 20px;" placeholder="8자리 이상의 영문 또는 숫자"
+                                        style="background-image: none; padding: 20px;" placeholder="비밀번호를 입력해주세요"
                                         autocomplete="off">
                                     <input class="mt-1 form-control userPw" type="password" name="userPw"
-                                        style="background-image: none; padding: 20px" placeholder="비밀번호 확인"
+                                        style="background-image: none; padding: 20px" placeholder="비밀번호를 다시 입력해주세요"
                                         autocomplete="off">
-                                    <div class="mt-3 mb-1 w-100 d-flex justify-content-start"><label for="userId">개인정보</label>
+                                    <div class="mt-3 mb-1 w-100 d-flex justify-content-start"><label
+                                            for="userId">개인정보</label>
                                     </div>
-                                    <input class="form-control userNm" type="text" name="userNm" placeholder="이름"
-                                        autocomplete="off">
+                                    <input class="form-control userNm" type="text" name="userNm"
+                                        placeholder="이름을 입력해주세요" autocomplete="off">
                                     <input class="mt-1 form-control userEmail" type="email" name="userEmail"
-                                        placeholder="이메일" autocomplete="off">
-                                    <button type="button" id="signUp" class="my-5 btn btn-primary rounded-pill w-50"
+                                        placeholder="이메일을 입력해주세요" autocomplete="off">
+                                    <button type="button" id="signUp" class="my-4 btn btn-primary rounded-pill w-50"
                                         data-bs-target="#loginModal" data-bs-toggle="modal"
                                         data-bs-dismiss="modal">완료</button>
                                 </form>
