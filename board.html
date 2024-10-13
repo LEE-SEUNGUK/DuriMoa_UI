@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/mypage.css">
@@ -34,6 +36,12 @@
             font-weight: normal;
             font-style: normal;
         }
+
+        td{
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
     </style>
     <script>
         $(document).ready(function () {
@@ -47,18 +55,96 @@
 
 <body>
     <header style="height: 10vh;"></header>
-    <div class="container">
-        <div class="d-flex">
-            <div style="margin-top: 50px !important; background-color: antiquewhite; height: 300px; width: 50%; border: 1px solid; border-radius: 20px;">
-                <div class="row d-flex align-items-center" style="height: 100%;">
-                    <div class="col-4" style="background-color: aqua;">
-                        d
-                    </div>
-                </div>
-            </div>
+    <div class="container" style="width: 80%;">
+        <div class="board-header mt-4">
+            <h2>포토존</h2>
+            <p>다른 커플들의 사진을 보고 다음 여행지를 정해보세요!</p>
         </div>
-
-
+        <table class="table" style="margin-top: 2% !important; margin: 0 auto; border-bottom: #ffffff;">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="d-flex">
+                            <div class="d-flex align-items-center"
+                                style="height: 300px; border-radius: 20px; margin: 0 auto; background-color: rgb(248, 248, 248);">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-3" style="text-align: center;">
+                                        <img src="./image/login_slide/1.jpg"
+                                            style="width: 216px; height: 270px; object-fit: cover; border-radius: 10px;"
+                                            alt="">
+                                    </div>
+                                    <div class="col-8" style="width: 65%; height: 95%; padding: 0;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h4 style="margin: 0px; font-weight: bold;">바닷바람 맞기 좋은곳♥</h4>
+                                        </div>
+                                        <div class="mt-1" style="color: rgb(107, 107, 107);">
+                                            # 제주도 # 바다 # 커플룩
+                                        </div>
+                                        <div class="d-flex mt-5 align-items-center">
+                                            <img src="./image/board_map.png" width="3%" alt="">
+                                            <p class="ms-2">제주시 맛도리 라면집</p>
+                                        </div>
+                                        <div class="mt-3" style="width: 90%;">
+                                            그 앞에 맛있는게 있었는데 라면이 지렸다. 그리고 앞에가 바로 바다여서 너무 좋았어. 그래서 그냥 찍어봤느데 키키 개좋다
+                                            그 앞에 맛있는게 있었는데 라면이 지렸다. 그리고 앞에가 바로 바다여서 너무 좋았어. 그래서 그냥 찍어봤느데 키키 개좋다
+                                        </div>
+                                    </div>
+                                    <div class="col-1" style="margin-bottom: 18%;">
+                                        <div class="d-flex flex-column">
+                                            <li class="mt-3 material-symbols-outlined d-flex align-items-center">
+                                                favorite<span class="ms-1" style="font-size: 14px;">27</span></li>
+                                            <li class="material-symbols-outlined d-flex align-items-center">
+                                                favorite<span class="ms-1" style="font-size: 14px;">99+</span></li>
+                                            
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-flex">
+                            <div class="d-flex align-items-center"
+                                style="height: 300px; border-radius: 20px; margin: 0 auto; background-color: rgb(248, 248, 248);">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-3" style="text-align: center;">
+                                        <img src="./image/login_slide/2.jpg"
+                                            style="width: 216px; height: 270px; object-fit: cover; border-radius: 10px;"
+                                            alt="">
+                                    </div>
+                                    <div class="col-8" style="width: 65%; height: 95%; padding: 0;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h4 style="margin: 0px; font-weight: bold;">바닷바람 맞기 좋은곳♥</h4>
+                                        </div>
+                                        <div class="mt-1" style="color: rgb(107, 107, 107);">
+                                            # 제주도 # 바다 # 커플룩
+                                        </div>
+                                        <div class="d-flex mt-5 align-items-center">
+                                            <img src="./image/board_map.png" width="3%" alt="">
+                                            <p class="ms-2">제주시 맛도리 라면집</p>
+                                        </div>
+                                        <div class="mt-3" style="width: 90%;">
+                                            그 앞에 맛있는게 있었는데 라면이 지렸다. 그리고 앞에가 바로 바다여서 너무 좋았어. 그래서 그냥 찍어봤느데 키키 개좋다
+                                            그 앞에 맛있는게 있었는데 라면이 지렸다. 그리고 앞에가 바로 바다여서 너무 좋았어. 그래서 그냥 찍어봤느데 키키 개좋다
+                                        </div>
+                                    </div>
+                                    <div class="col-1" style="margin-bottom: 18%;">
+                                        <div class="d-flex flex-column">
+                                            <li class="mt-3 material-symbols-outlined d-flex align-items-center">
+                                                favorite<span class="ms-1" style="font-size: 14px;">27</span></li>
+                                            <li class="material-symbols-outlined d-flex align-items-center">
+                                                favorite<span class="ms-1" style="font-size: 14px;">99+</span></li>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 
