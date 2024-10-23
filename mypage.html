@@ -1,230 +1,185 @@
-<style>
-    #couple_profile,
-    #my_profile {
-        width: 150px;
-        height: 150px;
-        border-radius: 15%;
-        background-color: #eeeeee;
-        overflow: hidden;
-        object-fit: cover;
-    }
-
-    #couple_info {
-        cursor: pointer;
-    }
-
-    .couple-input:hover {
-        outline: 1px solid #0000009e !important;
-        transition: outline 0.5s;
-    }
-
-    .couple-input:focus {
-        transition: all 0.01s;
-        outline: 2px solid #0000009e !important;
-    }
-
-    #couple_dday:focus {
-        outline: 1px solid #0000009e !important;
-    }
-
-    .speech-bubble {
-        position: absolute;
-        visibility: hidden;
-        top: 29%;
-        left: 77%;
-        opacity: 0;
-        width: 240px;
-        background: #c4ddc0;
-        border-radius: .4em;
-        padding: 10px;
-        transition: 0.5s
-    }
-
-    .speech-bubble:after {
-        visibility: hidden;
-        opacity: 0;
-        content: '';
-        position: absolute;
-        top: 1%;
-        left: 10%;
-        width: 0;
-        height: 0;
-        border: 20px solid transparent;
-        border-bottom-color: #c4ddc0;
-        border-top: 0;
-        border-left: 0;
-        margin-left: -10px;
-        margin-top: -20px;
-        transition: 0.4s
-    }
-
-    .speech-bubble.show {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .speech-bubble.show:after {
-        visibility: visible;
-        opacity: 1;
-    }
-</style>
-
-<div class="container">
-    <div class="row">
-        <section class="mypage_side col-3" style="margin-top: 8%;">
-            <h2 class="mb-5">마이 페이지</h2>
-            <ul class="w-75" style="font-size: 20px;">
-                <li class="my-page-item" data-target="userUpdate"><a href="#">개인정보 수정</a></li>
-                <hr>
-                <li class="my-page-item" data-target="couple"><a href="#">커플 관리</a></li>
-                <hr>
-                <li class="my-page-item" data-target="exit"><a href="#">회원 탈퇴</a></li>
-                <hr>
-            </ul>
-        </section>
-        <section class="userUpdate col-9" style="margin-top: 5%">
-            <div class="content-section" id="userUpdate" style="display: none;">
-                <h4>개인정보 수정</h4>
-                <hr class="bg-dark mypage_hr">
-                <div class="container">
-                    <form action="" style="border: none;">
-                        <div style="width: 46%; margin: 0 auto;">
-                            <div class="mt-5 mb-4 d-flex justify-content-between align-items-xl-center">
-                                <label for="">아이디</label>
-                                <input class="form-control" name="userId" type="text" disabled>
-                            </div>
-                            <div class="mb-4 d-flex justify-content-between align-items-center"><label
-                                    for="">비밀번호</label>
-                                <input class="form-control" type="password">
-                            </div>
-                            <div class="my-4 d-flex justify-content-between align-items-center"><label for="">새
-                                    비밀번호</label>
-                                <input class="form-control" name="userPw" type="text">
-                            </div>
-                            <div class="mb-4 d-flex justify-content-between align-items-center"><label for="">새 비밀번호
-                                    확인</label>
-                                <input class="form-control" type="password">
-                            </div>
-                            <div class="mb-5 d-flex justify-content-between align-items-center"><label for="">이름</label>
-                                <input class="form-control" name="userNm" type="text">
-                            </div>
-                        </div>
-                        <!-- <div> 키를 우측에 붙이고 싶을때 이런식으로
-                                <div class="mb-4 d-inline-flex justify-content-between align-items-center w-75"><label
-                                        for="">이름</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/mypage.css">
+</head>
+<body>
+    <div class="container" style="padding: 0 !important">
+        <div class="row">
+            <section class="mypage_side col-3" style="margin-top: 8%;">
+                <h2 class="mb-5">마이 페이지</h2>
+                <ul class="w-75" style="font-size: 20px;">
+                    <li class="my-page-item" data-target="userUpdate"><a href="#">개인정보 수정</a></li>
+                    <hr>
+                    <li class="my-page-item" data-target="couple"><a href="#">커플 설정</a></li>
+                    <hr>
+                    <li class="my-page-item" data-target="exit"><a href="#">회원 탈퇴</a></li>
+                    <hr>
+                </ul>
+            </section>
+            <section class="userUpdate col-9" style="margin-top: 5%">
+                <div class="content-section" id="userUpdate" style="display: none;">
+                    <h4>개인정보 수정</h4>
+                    <hr class="bg-dark mypage_hr">
+                    <div class="container">
+                        <form action="" style="border: none;">
+                            <div style="width: 46%; margin: 0 auto;">
+                                <div class="mt-5 mb-4 d-flex justify-content-between align-items-xl-center">
+                                    <label for="">아이디</label>
+                                    <input class="form-control" name="userId" type="text" disabled>
+                                </div>
+                                <div class="mb-4 d-flex justify-content-between align-items-center"><label
+                                        for="">비밀번호</label>
+                                    <input class="form-control" type="password">
+                                </div>
+                                <div class="my-4 d-flex justify-content-between align-items-center"><label for="">새
+                                        비밀번호</label>
+                                    <input class="form-control" name="userPw" type="text">
+                                </div>
+                                <div class="mb-4 d-flex justify-content-between align-items-center"><label for="">새 비밀번호
+                                        확인</label>
+                                    <input class="form-control" type="password">
+                                </div>
+                                <div class="mb-5 d-flex justify-content-between align-items-center"><label for="">이름</label>
                                     <input class="form-control" name="userNm" type="text">
-                                    
                                 </div>
-                                <button class="ms-2 btn btn-primary">이게 버튼</button>
-                            </div> -->
-                        <div class="w-75" style="margin: 0 auto; text-align: center;">
-                            <hr class="bg-black">
-                            <button type="submit" class="mt-4 btn btn-danger" id="update_user" style="background-color: #c4ddc0; height: 45px; color: black;
-                        border: none;">회원정보 수정</button>
-                        </div>
-                    </form>
+                            </div>
+                            <!-- <div> 키를 우측에 붙이고 싶을때 이런식으로
+                                    <div class="mb-4 d-inline-flex justify-content-between align-items-center w-75"><label
+                                            for="">이름</label>
+                                        <input class="form-control" name="userNm" type="text">
+                                        
+                                    </div>
+                                    <button class="ms-2 btn btn-primary">이게 버튼</button>
+                                </div> -->
+                            <div class="w-75" style="margin: 0 auto; text-align: center;">
+                                <hr class="bg-black">
+                                <button type="submit" class="mt-4 btn btn-danger" id="update_user" style="background-color: #c4ddc0; height: 45px; color: black;
+                            border: none;">회원정보 수정</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-8"></div>
-            </div>
-            <div class="content-section" id="couple" style="display: none;">
-                <h4>커플 관리</h4>
-                <hr class="bg-dark mypage_hr">
                 <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8">
-                        <div class="container">
-                            <form action="">
-                                <!-- margin: 0 auto는 자기 자신을 중앙정렬 -->
-                                <div style="width: 100%; margin: 0 auto;">
-                                    <div class="mt-3 d-inline-flex justify-content-center align-items-center"
-                                        style="font-size: 20px; width: 100%;">
-                                        <span>커플정보</span>를 등록해주세요
-                                    </div>
-                                    <div class="mt-4 d-flex justify-content-center">
-                                        <img src="/image/Jjang.jpg" id="my_profile" alt="">
-                                        <img class="ms-3" src="/image/couple_add.png" alt="" id="couple_profile"
-                                            data-bs-target="#couple_search" data-bs-toggle="modal"
-                                            style="object-fit:cover; padding: 45px;">
-                                    </div>
-                                    <div class="mt-5" style="width: 92%; margin-left: 6%;">
-                                        <div class="d-flex align-items-center">
-                                            <div
-                                                class="ps-2 d-inline-flex justify-content-between align-items-center w-75">
-                                                <label for="">커플 아이디</label>
-                                                <input class="form-control couple-input" name="userId" type="text"
-                                                    placeholder="커플 유저의 아이디를 입력하세요">
+                    <div class="col-4"></div>
+                    <div class="col-8"></div>
+                </div>
+                <div class="content-section" id="couple" style="display: none;">
+                    <h4>커플 설정</h4>
+                    <hr class="bg-dark mypage_hr">
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="container">
+                                <form action="">
+                                    <!-- margin: 0 auto는 자기 자신을 중앙정렬 -->
+                                    <div style="width: 100%; margin: 0 auto;">
+                                        <div class="mt-3 d-inline-flex justify-content-center align-items-center"
+                                            style="font-size: 20px; width: 100%;">
+                                            <span>커플정보</span>를 등록해주세요
+                                        </div>
+                                        <div class="mt-4 d-flex justify-content-center">
+                                            <img src="/image/Jjang.jpg" id="my_profile" alt="">
+                                            <img class="ms-3" src="/image/couple_add.png" alt="" id="couple_profile"
+                                                data-bs-target="#couple_search" data-bs-toggle="modal"
+                                                style="object-fit:cover;">
+                                        </div>
+                                        <div class="mt-5" style="width: 92%; margin-left: 6%;">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="ps-2 d-inline-flex justify-content-between align-items-center w-75">
+                                                    <label for="">커플 아이디</label>
+                                                    <input class="form-control couple-input" name="userId" type="text"
+                                                        placeholder="커플 유저의 아이디를 입력하세요">
+                                                </div>
+                                                <button class="ms-2 btn email_check"> 검색 </button>
                                             </div>
-                                            <button class="ms-2 btn email_check"> 검색 </button>
-                                        </div>
+<!-- 여기가 추가할 부분 -->
+                                            <div class="mt-3 d-flex couple-input align-items-center" 
+                                            style="height: 50px; width: 57%; margin: 0 auto; background: #f5f5f5; 
+                                            margin-right: 130px; border-radius: 10px;">
+												<img class="ms-4" src="/image/board.png" style="width: 40px; border-radius: 50%;">
+                                                <a style="margin-left: 70px;">채경원</a>
+											</div>
 
-                                        <div class="ps-2 d-flex justify-content-between align-items-center mt-4 w-75">
-                                            <label for="">커플 이름</label>
-                                            <input class="form-control couple-input" type="text"
-                                                placeholder="커플 닉네임을 설정해주세요">
-                                        </div>
-
-                                        <div class="ps-2 d-flex justify-content-between align-items-center mt-4 w-75">
-                                            <label for="">디데이 설정</label>
-                                            <input class="form-control couple-input" type="date" id="couple_dday">
+                                            <div class="ps-2 d-flex justify-content-between align-items-center mt-4 w-75">
+                                                <label for="">커플 이름</label>
+                                                <input class="form-control couple-input" type="text"
+                                                    placeholder="커플 닉네임을 설정해주세요">
+                                            </div>
+                                            <div class="ps-2 d-flex justify-content-between align-items-center mt-4 w-75">
+                                                <label for="">디데이 설정</label>
+                                                <input class="form-control couple-input" type="date" id="couple_dday">
+                                            </div>
                                         </div>
                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div>
+                                <img class="mb-3" src="image/question.png" alt="" width="40px" id="couple_info">
+                                <div class="speech-bubble">
+                                    <h5>커플은 왜 설정하나요?</h1>
+                                        <p>커플을 설정하게 되면 여행기록을 함께 관리할 수 있습니다</p>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div>
-                            <img class="mb-3" src="image/question.png" alt="" width="40px" id="couple_info">
-                            <div class="speech-bubble">
-                                <h5>커플은 왜 설정하나요?</h1>
-                                    <p>커플을 설정하게 되면 여행기록을 함께 관리할 수 있습니다</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="content-section" id="exit" style="display: none;">
-                <h4>회원 탈퇴</h4>
-                <hr class="bg-dark mypage_hr">
-                <div class="container">
-                    <form action="" style="border: none;">
-                        <div style="width: 41%; margin: 0 auto;">
-                            <div class="mt-5 mb-4 d-flex justify-content-between align-items-xl-center"><label
-                                    for="">아이디</label>
-                                <input class="form-control" name="userId" type="text" disabled>
+                <div class="content-section" id="exit" style="display: none;">
+                    <h4>회원 탈퇴</h4>
+                    <hr class="bg-dark mypage_hr">
+                    <div class="container">
+                        <form action="" style="border: none;">
+                            <div style="width: 41%; margin: 0 auto;">
+                                <div class="mt-5 mb-4 d-flex justify-content-between align-items-xl-center"><label
+                                        for="">아이디</label>
+                                    <input class="form-control" name="userId" type="text" disabled>
+                                </div>
+                                <div class="mb-5 d-flex justify-content-between align-items-center"><label
+                                        for="">비밀번호</label>
+                                    <input class="form-control" type="password">
+                                </div>
                             </div>
-                            <div class="mb-5 d-flex justify-content-between align-items-center"><label
-                                    for="">비밀번호</label>
-                                <input class="form-control" type="password">
+                            <div class="w-75" style="margin: 0 auto; text-align: center;">
+                                <hr class="bg-black">
+                                <button type="submit" class="mt-4 btn btn-danger" id="update_user" style="background-color: #c4ddc0; height: 45px; color: black;
+                            border: none;">회원 탈퇴</button>
                             </div>
-                        </div>
-                        <div class="w-75" style="margin: 0 auto; text-align: center;">
-                            <hr class="bg-black">
-                            <button type="submit" class="mt-4 btn btn-danger" id="update_user" style="background-color: #c4ddc0; height: 45px; color: black;
-                        border: none;">회원 탈퇴</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>
+    
+    <script>
+        $(".my-page-item").click(function () {
+            let target = $(this).data('target');
+    
+            $('.content-section').hide();
+    
+            $('#' + target).show();
+    
+            $('#couple_info').hover(function () {
+                $('.speech-bubble').addClass('show');
+            }, function () {
+                $('.speech-bubble').removeClass('show');
+            });
+        })
+    </script>
+</body>
+</html>
 
-<script>
-    $(".my-page-item").click(function () {
-        let target = $(this).data('target');
 
-        $('.content-section').hide();
-
-        $('#' + target).show();
-
-        $('#couple_info').hover(function () {
-            $('.speech-bubble').addClass('show');
-        }, function () {
-            $('.speech-bubble').removeClass('show');
-        });
-    })
-</script>

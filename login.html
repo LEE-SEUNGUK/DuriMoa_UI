@@ -10,12 +10,16 @@
     h3>span {
         color: #6cae62;
     }
+
+    i {
+        position: absolute;
+    }
 </style>
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="login modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="container-fluid">
+            <div class="container-fluid" style="padding: 0 !important;">
                 <div class="row w-100">
                     <div class="col-6 login-left">
                         <div class="modal-body">
@@ -25,11 +29,16 @@
                             <div class=" mt-4 d-flex justify-content-center">
                                 <form class="d-flex flex-column justify-content-center align-items-center w-75"
                                     action="" method="post">
-                                    <input class="form-control userId" type="text" name="userId" placeholder="이메일">
-                                    <label for="id"></label>
-                                    <input class="mt-1 form-control userPw" type="password" name="userPw"
-                                        placeholder="비밀번호" autocomplete="off">
-                                    <label for=""></label>
+                                    <div class="w-100 position-relative" style="height: 45px;">
+                                        <input class="form-control userId" type="text" name="userId" placeholder="이메일">
+                                        <label for="id"></label>
+                                    </div>
+                                    <div class="w-100 position-relative" style="height: 45px;">
+                                        <input class="mt-1 form-control userPw" type="password" name="userPw"
+                                            placeholder="비밀번호" autocomplete="off">
+                                        <label for=""></label>
+                                        <i class="far fa-eye"></i>
+                                    </div>
                                     <div class="mt-4 d-flex w-100">
                                         <input type="checkbox" id="auto_login">
                                         <label for="auto_login">자동 로그인</label>
@@ -91,6 +100,7 @@
                                     <input class="form-control userPw" type="password" name="userPw"
                                         style="background-image: none; padding: 20px;" placeholder="비밀번호를 입력해주세요"
                                         autocomplete="off">
+                                    <i class="far fa-eye"></i>
                                     <input class="mt-1 form-control userPw" type="password" name="userPw"
                                         style="background-image: none; padding: 20px" placeholder="비밀번호를 다시 입력해주세요"
                                         autocomplete="off">

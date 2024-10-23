@@ -63,7 +63,7 @@ li {
 .search_btn {
     position: absolute;
     visibility: hidden;
-    background: url("../image/search.png") no-repeat center;
+    background: url("resources/assets/img/search.png") no-repeat center;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
