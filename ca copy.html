@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9d407e93fbddd6bd9146ab8e8274441c&libraries=services"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>두리모아</title>
+    <style>
+        * {
+            box-sizing: border-box !important;
+            font-family: 'Pretendard-Regular';
+        }
+
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'LeeSeoyun';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .travelModal {
+            max-width: 1300px;
+        }
+
+        .carousel-item img {
+            height: 780px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-indicators {
+            bottom: 0;
+        }
+
+        .carousel-play-pause {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-play-pause:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-play-pause i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .modal-body{
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header style="height: 9vh;"></header>
+        <main class="d-flex container-fluid align-items-center" style="height: 91vh;">
+            <div class="h-100" id="map" style="width: 700px; margin: 0 auto;"></div>
+            <button  data-bs-toggle="modal"
+            data-bs-target="#markerModal"> ㅇㅇ</button>
+        </main>
+
+        <!-- Modal -->
+        <div class="modal fade" id="markerModal" tabindex="-1" aria-labelledby="markerModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered travelModal">
+                <div class="modal-content" style="height: 780px">
+                    <div class="modal-body">
+                        <div class="row h-100" style="width: 100%; margin: 0;">
+                            <div class="col-md-6 p-0 h-100">
+                                <!-- Carousel -->
+                                <div id="travelCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#travelCarousel" data-bs-slide-to="0"
+                                            class="active"></button>
+                                        <button type="button" data-bs-target="#travelCarousel"
+                                            data-bs-slide-to="1"></button>
+                                        <button type="button" data-bs-target="#travelCarousel"
+                                            data-bs-slide-to="2"></button>
+                                    </div>
+                                    <div class="carousel-inner h-100">
+                                        <div class="carousel-item active">
+                                            <img src="image/date.png" class="d-block w-100"
+                                                alt="Travel Image 1">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="image/diary.png" class="d-block w-100"
+                                                alt="Travel Image 2">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="image/question.png" class="d-block w-100"
+                                                alt="Travel Image 3">
+                                        </div>
+                                    </div>
+                                    <!-- Play/Pause Button -->
+                                    <button class="carousel-play-pause">
+                                        <i class="fas fa-pause"></i>
+                                    </button>
+                                    <!-- Navigation Arrows -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#travelCarousel"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#travelCarousel"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-0">
+                                <h3 id="modalTitle" style="text-align: center; margin-top: 15%;">타이틀</h3>
+                                <div class="d-flex align-items-center mt-5 ms-4">
+                                    <img src="image/board_map.png" width="30px" alt="">
+                                    <p class="ms-4" style="font-size: 20px;">제주도 서귀포</p>
+                                </div>
+                                <div class="d-flex align-items-center mt-3 ms-4">
+                                    <img src="image/date.png" width="30px" alt="">
+                                    <p class="ms-4" style="font-size: 20px;">제주도 서귀포</p>
+                                </div>
+                                <div class="travelContet mx-4 p-3"
+                                    style="font-size: 18px; height: 40%; background-color: #ececec; border-radius: 15px; margin-top: 20%;">
+                                    콘텐츠 내용이 여기에 들어갑니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('header').load('header.html', function () {
+                $('#mypage').click(function () {
+                    $('main').load('mypage.html');
+                });
+            });
+
+            // Initialize map
+            var mapContainer = document.getElementById('map');
+            var mapOptions = {
+                center: new kakao.maps.LatLng(36.3549216904682, 127.830449776319),
+                level: 12
+            };
+
+            var map = new kakao.maps.Map(mapContainer, mapOptions);
+
+            // Marker positions
+            var positions = [
+                {
+                    content: '<div>카카오</div>',
+                    latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+                },
+                {
+                    content: '<div>생태연못</div>',
+                    latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+                },
+                {
+                    content: '<div>텃밭</div>',
+                    latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+                },
+                {
+                    content: '<div>근린공원</div>',
+                    latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+                }
+            ];
+
+            // Create markers
+            positions.forEach(function(position) {
+                var imageSrc = 'image/marker2.png',
+                    imageSize = new kakao.maps.Size(66, 55),
+                    imageOption = { offset: new kakao.maps.Point(34, 50) };
+
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: position.content
+                });
+
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: position.latlng,
+                    image: markerImage
+                });
+
+                // Add marker event listeners
+                kakao.maps.event.addListener(marker, 'mouseover', function() {
+                    infowindow.open(map, marker);
+                });
+
+                kakao.maps.event.addListener(marker, 'mouseout', function() {
+                    infowindow.close();
+                });
+
+                kakao.maps.event.addListener(marker, 'click', function() {
+                    var myModal = new bootstrap.Modal(document.getElementById('markerModal'));
+                    myModal.show();
+                });
+            });
+
+            // Initialize carousel and play/pause functionality
+            var travelCarousel = new bootstrap.Carousel(document.getElementById('travelCarousel'), {
+                interval: 5000,
+                ride: 'carousel',
+                wrap: true
+            });
+
+            var isPlaying = true;
+            $('.carousel-play-pause').click(function() {
+                if (isPlaying) {
+                    travelCarousel.pause();
+                    $(this).find('i').removeClass('fa-pause').addClass('fa-play');
+                } else {
+                    travelCarousel.cycle();
+                    $(this).find('i').removeClass('fa-play').addClass('fa-pause');
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Reset play/pause state when modal is opened
+            $('#markerModal').on('show.bs.modal', function() {
+                isPlaying = true;
+                $('.carousel-play-pause i').removeClass('fa-play').addClass('fa-pause');
+                travelCarousel.cycle();
+            });
+        });
+    </script>
+</body>
+
+</html>
